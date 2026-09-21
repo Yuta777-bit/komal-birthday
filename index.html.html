@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For Komal — A Little Universe Made For You</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;700&display=swap');
+*{box-sizing:border-box}body{margin:0;background:#08050b;color:#fff;font-family:Inter,system-ui;overflow-x:hidden}.stars,.petals{position:fixed;inset:0;pointer-events:none;z-index:0}.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.7;animation:twinkle 3s infinite alternate}.petal{position:absolute;top:-40px;font-size:22px;animation:fall linear forwards;filter:drop-shadow(0 0 8px #ff6fae)}@keyframes twinkle{to{opacity:.15;transform:scale(.5)}}@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(500deg);opacity:0}}
+.wrap{position:relative;z-index:1;min-height:100vh}.screen{min-height:100vh;display:grid;place-items:center;padding:30px}.card{width:min(900px,94vw);padding:46px 28px;border:1px solid rgba(255,255,255,.16);border-radius:34px;background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.035));backdrop-filter:blur(18px);box-shadow:0 30px 100px rgba(255,36,125,.15),inset 0 1px rgba(255,255,255,.16);text-align:center}.eyebrow{letter-spacing:.32em;text-transform:uppercase;color:#ff9bc5;font-size:12px}.title{font:700 clamp(58px,12vw,130px)/.8 'Cormorant Garamond';margin:20px 0;background:linear-gradient(90deg,#fff,#ff8fbe,#fff0f7);-webkit-background-clip:text;color:transparent}.subtitle{font-family:'Cormorant Garamond';font-size:28px;color:#ffd7e7}.btn{border:0;padding:14px 24px;border-radius:999px;background:linear-gradient(90deg,#ff3d89,#ff7cb3);color:white;font-weight:700;cursor:pointer;box-shadow:0 10px 35px #ff3d8940}.input{padding:14px 18px;border-radius:999px;border:1px solid #ffffff25;background:#0006;color:#fff;outline:none;text-align:center;margin:14px 5px}.hidden{display:none}.rose{font-size:72px;filter:drop-shadow(0 0 25px #ff397f)}.message{max-width:700px;margin:24px auto;font:500 25px/1.5 'Cormorant Garamond';color:#ffe8f1}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:30px 0}.tile{padding:25px 15px;border-radius:22px;background:#ffffff09;border:1px solid #ffffff14}.tile b{display:block;font-size:28px;color:#ff9bc5;margin-bottom:8px}.footer{margin-top:36px;color:#aaa;font-size:12px;letter-spacing:.14em}.count{font-size:34px;font-weight:700;color:#fff;margin:20px}.wish{margin-top:30px;padding:25px;border-radius:25px;background:linear-gradient(135deg,#ff2f7d18,#9f5cff18);border:1px solid #ffffff18}.confetti{position:fixed;z-index:5;pointer-events:none;font-size:24px;animation:pop 1.7s ease-out forwards}@keyframes pop{to{transform:translate(var(--dx),var(--dy)) rotate(600deg);opacity:0}}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.card{padding:38px 18px}.subtitle{font-size:23px}}
+</style></head>
+<body>
+<div class="stars" id="stars"></div><div class="petals" id="petals"></div>
+<div class="wrap">
+<section class="screen" id="lock"><div class="card">
+<div class="rose">🌹</div><div class="eyebrow">A tiny secret universe</div>
+<h1 class="title">KOMAL</h1><div class="subtitle">There is something waiting behind this little door ✨</div>
+<input class="input" id="pw" type="password" placeholder="Enter the secret password"><button class="btn" onclick="unlock()">Open the surprise</button>
+<div id="err" style="color:#ff8fb9;margin-top:12px;height:18px"></div>
+</div></section>
+<section class="screen hidden" id="main"><div class="card">
+<div class="eyebrow">September 22 • Your Day</div><h1 class="title">Happy Birthday</h1><div class="subtitle">to the one and only <b style="color:#ff9bc5">Komal</b> 💗</div>
+<p class="message">If the world had a little more of your laughter, it would probably be a brighter place. So today, I hope life gives you back all the happiness, strength and beautiful moments you give to the people around you.</p>
+<div class="grid"><div class="tile"><b>🌷</b>More reasons to smile</div><div class="tile"><b>✨</b>More dreams coming true</div><div class="tile"><b>🦋</b>More unforgettable memories</div></div>
+<div class="wish"><div class="eyebrow">A birthday wish, sealed with starlight</div><p class="message">May this new chapter surprise you in the best ways. May you stay wonderfully, unapologetically YOU. And whenever you look back at this day, I hope you remember that someone took a little extra time to make a whole universe just for you.</p><button class="btn" onclick="celebrate()">Make a wish ✨</button></div>
+<div class="count" id="count"></div><div class="footer">CREATED BY ANUJ KUMAR SHARMA</div>
+</div></section></div>
+<script>
+const stars=document.getElementById('stars');for(let i=0;i<120;i++){let s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=Math.random()*3+'s';stars.appendChild(s)}
+function petals(){let p=document.createElement('span');p.className='petal';p.textContent=['🌸','🌹','🌷','💮'][Math.floor(Math.random()*4)];p.style.left=Math.random()*100+'%';p.style.setProperty('--x',(Math.random()*240-120)+'px');p.style.animationDuration=(5+Math.random()*5)+'s';document.getElementById('petals').appendChild(p);setTimeout(()=>p.remove(),10000)}setInterval(petals,450);
+function unlock(){let v=document.getElementById('pw').value.toLowerCase().trim();if(v==='komal'){document.getElementById('lock').classList.add('hidden');document.getElementById('main').classList.remove('hidden');celebrate();}else{document.getElementById('err').textContent='Hmm… that secret needs a little more magic 💫'}}
+document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+function celebrate(){for(let i=0;i<70;i++){let c=document.createElement('span');c.className='confetti';c.textContent=['💖','✨','🌸','⭐','🎀'][Math.floor(Math.random()*5)];c.style.left='50%';c.style.top='45%';c.style.setProperty('--dx',(Math.random()*900-450)+'px');c.style.setProperty('--dy',(Math.random()*700-350)+'px');c.style.animationDelay=Math.random()*.35+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),2200)}}
+function countdown(){let target=new Date('2026-09-22T00:00:00+05:30').getTime(),now=Date.now(),d=Math.max(0,target-now),h=Math.floor(d/36e5),m=Math.floor(d%36e5/6e4),s=Math.floor(d%6e4/1e3);document.getElementById('count').textContent=d?`The birthday magic arrives in ${h}h ${m}m ${s}s`:'Today is your day. Shine, Komal. ✨'}countdown();setInterval(countdown,1000);
+</script></body></html>
